@@ -11,9 +11,6 @@ font-family: 'Poppins', sans-serif;
 font-family: 'Yellowtail', cursive;
 
 */
-*{
-  transition: all 2s ease-in-out;
-}
 
 .fade-enter {
   opacity: 0;
@@ -32,8 +29,6 @@ font-family: 'Yellowtail', cursive;
   opacity: 0;
   transition: opacity 1s;
 }
-
-
 
 .App {
   height: 100vh;
