@@ -1,0 +1,103 @@
+Objetivo del proyecto: Debes construir una aplicación que funcione de manera similar a esta: https://random-quote-machine.freecodecamp.rocks/. La aplicación debe mostrar citas aleatorias y permitir al usuario tuitear la cita actual.
+
+Tecnologías que puedes usar: Puedes usar cualquier combinación de HTML, JavaScript, CSS, Bootstrap, SASS, React, Redux y jQuery para completar este proyecto. Se recomienda usar un framework de frontend como React.
+
+Historias de usuario: Las historias de usuario son básicamente los requerimientos que debe cumplir tu aplicación. Para este proyecto, son las siguientes:
+
+Historia de usuario #1: Debe haber un elemento contenedor con el id “quote-box”.
+Historia de usuario #2: Dentro del elemento con id “quote-box”, debe haber un elemento con el id “text”.
+Historia de usuario #3: Dentro del elemento con id “quote-box”, debe haber un elemento con el id “author”.
+Historia de usuario #4: Dentro del elemento con id “quote-box”, debe haber un elemento clickeable con el id “new-quote”.
+Historia de usuario #5: Dentro del elemento con id “quote-box”, debe haber un elemento clickeable con el id “tweet-quote”.
+Historia de usuario #6: Al cargar la página, la máquina de citas debe mostrar una cita aleatoria en el elemento con id “text”.
+Historia de usuario #7: Al cargar la página, la máquina de citas debe mostrar el autor de la cita aleatoria en el elemento con id “author”.
+Historia de usuario #8: Al hacer clic en el botón, la máquina de citas debe buscar una nueva cita y mostrarla en el elemento con id “text”.
+Historia de usuario #9: Al hacer clic en el botón, la máquina de citas debe buscar el autor de la nueva cita y mostrarlo en el elemento con id “author”.
+Historia de usuario #10: Debe ser posible tuitear la cita actual haciendo clic en el elemento con id “tweet-quote”. Este elemento debe incluir el enlace “twitter.com/intent/tweet” en su atributo href.
+Historia de usuario #11: El elemento contenedor debe estar centrado horizontalmente.
+Pruebas: Puedes usar la plantilla de CodePen proporcionada para construir tu proyecto y hacer clic para crear tu propio pen. O puedes usar este enlace CDN para ejecutar las pruebas en cualquier entorno que te guste: https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js. Una vez que hayas terminado, debes enviar la URL de tu proyecto con todas sus pruebas pasando.
+
+¿De dónde sacar las frases?: El requerimiento no especifica de dónde debes obtener las citas. Puedes usar cualquier API de citas que prefieras o incluso puedes crear tu propio conjunto de citas. Solo asegúrate de que la API o el conjunto de citas que elijas tenga suficientes citas y autores para que tu aplicación pueda mostrar una variedad de ellos.
+
+¿A dónde enviar el proyecto?: Normalmente, debes enviar tu proyecto a la plataforma donde estás realizando el curso. En este caso, parece que estás siguiendo un curso de freeCodeCamp, por lo que deberías enviar tu proyecto allí. Sin embargo, te recomendaría que verifiques esta información en las instrucciones del curso.
+
+¿Cómo será corregido?: Generalmente, los proyectos en plataformas de aprendizaje como freeCodeCamp son evaluados automáticamente. Debes asegurarte de que tu proyecto pase todas las pruebas proporcionadas. Puedes ejecutar las pruebas usando el enlace CDN proporcionado en las instrucciones del proyecto.
+
+¿Las citas a Twitter deben ser reales?: Sí, cuando haces clic en el botón para tuitear una cita, se debe abrir una nueva ventana o pestaña con un tweet prellenado que contenga la cita actual y el autor. No necesitas tener una cuenta de Twitter para completar este proyecto, pero el enlace debe llevar a la página de Twitter con el tweet prellenado.
+
+¿Cómo hacer las pruebas en Visual Studio Code?: Puedes copiar el enlace CDN proporcionado en las instrucciones del proyecto y agregarlo a tu archivo HTML. Luego, puedes abrir tu archivo HTML en un navegador y deberías ver un botón en la esquina superior izquierda para ejecutar las pruebas.
+
+
+**Paso 1 - De dónde sacar las frases**: 
+Para este proyecto, necesitas una fuente de citas. Esta fuente puede ser una API de citas en línea o un conjunto de citas que tú mismo crees. Aquí te dejo un ejemplo de cómo podrías hacerlo si decides crear tu propio conjunto de citas:
+
+```javascript
+const quotes = [
+  { quote: "La vida es lo que pasa mientras estás ocupado haciendo otros planes.", author: "John Lennon" },
+  { quote: "El que no arriesga no gana.", author: "Proverbio" },
+  // Añade más citas según lo necesites
+];
+```
+
+En este caso, `quotes` es un arreglo de objetos, donde cada objeto tiene dos propiedades: `quote` y `author`. Cuando necesites una nueva cita, puedes seleccionar una al azar de este arreglo.
+
+Si prefieres usar una API, tendrás que hacer una solicitud a la API cada vez que necesites una nueva cita. La forma exacta de hacer esto dependerá de la API que elijas. Normalmente, recibirás la cita como respuesta de la API, y podrás extraerla y mostrarla en tu aplicación.
+
+**Paso 5 - Cómo hacer las pruebas en Visual Studio Code**: 
+Para hacer las pruebas en Visual Studio Code, primero necesitas incluir el script de pruebas en tu archivo HTML. Aquí te dejo un ejemplo de cómo hacerlo:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Asegúrate de incluir el script de pruebas -->
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</head>
+<body>
+  <!-- Aquí va tu código -->
+</body>
+</html>
+```
+
+Una vez que hayas incluido el script de pruebas, puedes abrir tu archivo HTML en un navegador. Deberías ver un botón en la esquina superior izquierda que dice "Select Test Suite". Haz clic en él, selecciona "Random Quote Machine" y luego haz clic en "Run". Esto ejecutará las pruebas en tu proyecto.
+
+Si estás utilizando React y creando tu proyecto con `create-react-app` o similar, no puedes agregar directamente el script en tu archivo HTML debido a las restricciones de seguridad del mismo. Sin embargo, hay una forma de hacerlo:
+
+1. En tu archivo `public/index.html`, puedes agregar la etiqueta del script justo antes de cerrar la etiqueta `</body>`:
+
+```html
+<body>
+  <!-- ... -->
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+```
+
+2. Luego, en tu componente principal de React (usualmente `App.js`), puedes agregar un efecto secundario para montar las pruebas una vez que el componente se haya renderizado:
+
+```jsx
+import React, { useEffect } from 'react';
+
+function App() {
+  useEffect(() => {
+    // FCC Testing Suite
+    const script = document.createElement('script');
+    script.src = 'https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  return (
+    // Tu código aquí
+  );
+}
+
+export default App;
+```
+
+Esto creará y agregará el script de pruebas a tu aplicación después de que se haya renderizado el componente `App`. De esta manera, puedes ejecutar las pruebas de freeCodeCamp en tu aplicación React.
+
+Espero que esto te ayude. Si tienes alguna otra pregunta, no dudes en preguntar. ¡Feliz codificación!
+
+Origen: Conversación con Bing, 9/1/2024
+(1) github.com. https://github.com/tsitskiev/FCC-test-master/tree/3d2d3f3e23fcef498af07df997399932401fc1eb/src%2FApp.js.
+
